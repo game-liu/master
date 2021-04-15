@@ -40,6 +40,7 @@ class midSolution(object):
         self.midorder(root.right)
 
 
+# 后续遍历
 class postSolution(object):
     def orderTraversal(self, root: TreeNode) -> List[int]:
         self.vals = []
