@@ -1,3 +1,5 @@
+import random
+# import sort
 # 直接插入排序
 def insert_sort(lists):
     n = len(lists)
@@ -30,8 +32,7 @@ def shell_sort(lists):
 
 
 if __name__ == "__main__":
-    gap = [5, 3, 1]
-    L = [45, 34, 78, 12, 34, 32, 64]
-    ret = shell_sort(L)
-    # ret = insert_sort(L)
+    L = list(range(1, 100))
+    random.shuffle(L)  # 打乱列表
+    ret = insert_sort(L)
     print(ret)
