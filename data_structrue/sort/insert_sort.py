@@ -1,5 +1,6 @@
 import random
-# import sort
+
+
 # 直接插入排序
 def insert_sort(lists):
     n = len(lists)
