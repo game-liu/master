@@ -1,30 +1,52 @@
-# 广度优先
-
-# 图
-graph = {
-    "A": ["B", "C"],
-    "B": ["A", "C", "D"],
-    "C": ["A", "B", "D", "E"],
-    "D": ["B", "C", "E", "F"],
-    "E": ["C", "D"],
-    "F": ["D"]
-}
+class Node(object):
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
 
 
-def BFS(graph, s):  # s为起始点
-    queue = []
-    queue.append(s)  # 把根节点放进队列
-    seen = set()  # 将根节点加入到集合中，记录已经访问过哪些节点
-    seen.add(s)
-    while len(queue):  # 当队列还有数据时
-        vertex = queue.pop(0)  # 从队列中拿出一个节点
-        nodes = graph[vertex]  # 找到该节点的所有节点
-        for w in nodes:
-            if w not in seen:  # 如果w还没遍历过
-                queue.append(w)
-                seen.add(w)
-        print(vertex)
+class Tree(object):
+    def __init__(self):
+        self.root = None
+
+    # 广度优先添加
+    def add_element(self, value_element):
+        # value_element 为加入的节点
+        node = Node(value_element)
+        if not self.root:
+            self.root = node
+            return
+        queue = [self.root]
+        while True:
+            pop_node = queue.pop(0)
+            if not pop_node.left:
+                pop_node.left = node
+                return
+            else:
+                queue.append(pop_node.left)
+            if not pop_node.right:
+                pop_node.right = node
+                return
+            else:
+                queue.append(pop_node.right)
+
+    def BFS(self):
+        if not self.root:
+            return
+        queue = [self.root]
+        while queue:
+            pop_node = queue.pop(0)
+            print(pop_node.value)
+            if pop_node.left:
+                queue.append(pop_node.left)
+            if pop_node.right:
+                queue.append(pop_node.right)
 
 
-if __name__ == '__main__':
-    BFS(graph, "A")
+tree = Tree()
+tree.add_element(1)
+tree.add_element(3)
+tree.add_element(6)
+tree.add_element(2)
+tree.add_element(10)
+tree.BFS()
