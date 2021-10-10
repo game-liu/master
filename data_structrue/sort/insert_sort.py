@@ -14,6 +14,19 @@ def insert_sort(lists):
     return lists
 
 
+def insert_sort_1(l: list) -> None:
+    if not l:
+        return
+    for i in range(1, len(l)):  # 默认第一个牌已经排好序，从第二个牌开始进行插入排序
+        temp = l[i]  # 当前需要排序的牌
+        j = i - 1  # 已经排好序的牌的下标
+        while j >= 0 and l[j] > temp:  # j>=0为了防止当前需要排序的牌比手里的牌都要小，手里的牌都要往右挪
+            l[j + 1] = l[j]  # 往右挪
+            j -= 1  # 当前牌的下标
+        l[j + 1] = temp  # 插入找好的位置
+        print(l)
+
+
 # 希尔排序-插入排序
 def shell_sort(lists):
     length = len(lists)
@@ -33,7 +46,10 @@ def shell_sort(lists):
 
 
 if __name__ == "__main__":
-    L = list(range(1, 100))
+    L = list(range(1, 10))
     random.shuffle(L)  # 打乱列表
-    ret = insert_sort(L)
-    print(ret)
+    print(L)
+    # ret = insert_sort(L)
+    # print(ret)
+    insert_sort_1(L)
+    print(L)
