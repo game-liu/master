@@ -44,3 +44,49 @@ if __name__ == '__main__':
     r = len(a) - 1
     quick_sort(a, l, r)
     print(a)
+
+    
+    
+'''
+非递归版本 （区别仅为Qsort方法，使用栈来保存中间结果），python3 执行
+'''
+
+# def swap(lst, left, right):
+#     lst[left], lst[right] = lst[right], lst[left]
+#
+#
+# def paritition(lst, left, right):
+#     key = lst[left]
+#     while left < right:
+#         if left < right and key <= lst[right]:
+#             right = right - 1
+#         lst[left], lst[right] = lst[right], lst[left]
+#
+#         if left < right and lst[left] <= key:
+#             left = left + 1
+#         lst[left], lst[right] = lst[right], lst[left]
+#     print('left: {} right: {} lst: {}'.format(left, right, lst))
+#     return left
+#
+#
+# def Qsort(lst, left, right):
+#     piviots = [(left, right)]
+#     while len(piviots) > 0:
+#         piviot = piviots.pop(0)
+#         if piviot[0] < piviot[1]:
+#             piviot_num = paritition(lst, piviot[0], piviot[1])
+#
+#             if piviot_num - 1 > piviot[0]:
+#                 piviots.append((piviot[0], piviot_num-1))
+#
+#             if piviot_num + 1 < piviot[1]:
+#                 piviots.append((piviot_num+1, piviot[1]))
+#
+#
+# def Quicksort(lst):
+#     Qsort(lst, 0, len(lst) - 1)
+#
+#
+# if __name__ == "__main__":
+#     ll = [1, 20, 3, 50, 40, 70, 23, 100, 23]
+#     Quicksort(ll)
